@@ -1,0 +1,154 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: black;
+  color: goldenrod;
+}
+nav {
+  display: flex;
+  background-color: goldenrod;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 20px;
+  position: sticky;
+  top: 0px;
+}
+.logo img {
+  margin-top: 5px;
+  height: 80px;
+  width: 80px;
+}
+nav ul {
+  display: flex;
+  list-style-type: none;
+}
+nav ul li {
+  margin: 10px;
+  padding: 10px 20px;
+}
+nav ul li a {
+  text-decoration: none;
+  color: black;
+}
+nav ul li a:hover {
+  background-color: black;
+  border-radius: 10px;
+  opacity: 100%;
+  color: white;
+}
+button {
+  padding: 5px 10px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-weight: bold;
+}
+.signin {
+  background-color: black;
+  color: goldenrod;
+}
+.signup {
+  background-color: black;
+  color: goldenrod;
+}
+
+.hero img {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+
+  margin-top: 30px;
+  width: 850px;
+  height: 450px;
+}
+.main {
+  margin-bottom: 50px;
+}
+.halls {
+  display: flex;
+  justify-content: center;
+}
+.hall-h1 {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 5px;
+}
+.hall-img img {
+  width: 1000px;
+  height: 500px;
+  border-radius: 10px;
+  border: 2px solid goldenrod;
+  box-shadow: 0px 0px 15px white;
+}
+.a {
+  width: 100%;
+  text-align: center;
+  font-size: 30px;
+  color: goldenrod;
+}
+
+.adiv {
+  text-align: center;
+  margin-top: 5px;
+}
+
+.halls {
+  display: flex;
+  justify-content: center;
+}
+.hall-h1 {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 5px;
+}
+.hall-img img {
+  width: 1000px;
+  border-radius: 10px;
+  height: 500px;
+  border: 2px solid goldenrod;
+  box-shadow: 0px 0px 15px white;
+}
+.a {
+  width: 100%;
+  text-align: center;
+  font-size: 30px;
+  color: goldenrod;
+}
+
+.adiv {
+  text-align: center;
+  margin-top: 5px;
+}
+
+.main {
+  margin-bottom: 50px;
+}
+.halls {
+  display: flex;
+  justify-content: center;
+}
+.hall-h1 {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 5px;
+}
+.hall-img img {
+  width: 1000px;
+  border-radius: 10px;
+  height: 500px;
+  border: 2px solid goldenrod;
+  box-shadow: 0px 0px 15px white;
+}
+.a {
+  width: 100%;
+  text-align: center;
+  font-size: 30px;
+  color: goldenrod;
+}
+
+.adiv {
+  text-align: center;
+  margin-top: 5px;
+}
