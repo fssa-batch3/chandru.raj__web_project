@@ -4,6 +4,7 @@
 }
 .main {
   display: flex;
+  width: 99vw;
   margin-top: 10px;
   border: 2px solid;
   border-radius: 10px;
@@ -12,14 +13,14 @@
 }
 
 .main-div {
-  display: flex;
-  flex: 1;
+  width: 50%;
 }
 
 .main-content {
   display: flex;
   flex-direction: column;
-  flex: 1;
+  width: 20%;
+  padding-left: 10%;
 }
 
 .main-btn {
@@ -27,7 +28,7 @@
   flex: 1;
 }
 .hall-pic {
-  width: 400px;
+  width: 30vw;
   height: 250px;
   margin-left: 10px;
   margin-top: 5px;
@@ -35,8 +36,11 @@
   border-radius: 5px;
   box-shadow: 0px 0px 10px goldenrod;
 }
+.hall-pic img {
+  width: 100%;
+}
 .book-now-btn {
-  margin-right: 100px;
   padding: 12px 17px;
+  cursor: pointer;
   background-color: goldenrod;
 }

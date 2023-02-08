@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="../assets/css/login.css" />
+    <link rel="stylesheet" href="../assets/css/sign-up.css" />
   </head>
   <body>
     <body>
@@ -24,9 +24,12 @@
             <!-- to represent logi page -->
             <div class="para">
               <div>
-                <h1>Login Here</h1>
+                <h1>Sign up here</h1>
               </div>
-
+              <div class="name">
+                <p>Full name</p>
+                <input type="Name" id="name" placeholder="Name" />
+              </div>
               <div class="email">
                 <p>Email address</p>
                 <input
@@ -48,32 +51,30 @@
                 >
               </div>
 
-              <div class="sign">
+              <!-- <div class="sign">
                 <a href="./sign-in.html">Don't have an account ?</a>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
       </div>
       <script>
         function submitLogin() {
+          let arr = [];
+          if (localStorage.getItem("local") != null) {
+            arr = JSON.parse(localStorage.getItem("local"));
+          }
           const email = document.getElementById("email").value;
           const password = document.getElementById("password").value;
+          const name = document.getElementById("name").value;
 
-          const champ = localStorage.getItem("local");
-          const obj = JSON.parse(champ);
-
-          const tofind = obj.find((h) => h["email"] == email);
-
-          console.log(tofind);
-
-          localStorage.setItem("details", JSON.stringify(tofind));
-
-          if (tofind["email"] == email && tofind["pass"] == password) {
-            alert("Succesfully loged in");
-          } else {
-            alert("Something went wrong");
-          }
+          const chan = new Object();
+          chan.email = email;
+          chan.pass = password;
+          chan.name = name;
+          arr.push(chan);
+          const str = JSON.stringify(arr);
+          localStorage.setItem("local", str);
         }
       </script>
     </body>

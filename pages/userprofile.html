@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Profile | freshstocks</title>
+    <link rel="stylesheet" href="userprofile.css" />
+    <link rel="stylesheet" href="homepage.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="../assets/css/userprofile.css" />
+    ​
+  </head>
+  ​
+  <body class="bdy">
+    <div class="wholeprofilecontainer">
+    
+      <div class="userdetails">
+        <h1 class="profileh1">User Profile</h1>
+        <form action="homepage.html">
+          <div class="namesurflex">
+            <div>
+              <label for="name">Name</label><br />
+              <input
+                type="text"
+                class="name"
+                id="name"
+                placeholder=" enter your name"
+              /><br />
+            </div>
+            <div>
+              <label for="surname">Last Name</label><br />
+              <input
+                type="text"
+                class="surname"
+                id="surname"
+                placeholder=" enter your surname"
+              /><br />
+            </div>
+          </div>
+          ​ <label for="emailid">Email ID</label><br />
+          <input
+            type="email"
+            class="emailid"
+            id="emailid"
+            placeholder=" enter your Email ID"
+          /><br />
+          <label for="mobilenumber">Mobile Number</label><br />
+          <input
+            type="number"
+            class="mobilenumber"
+            id="mobilenumber"
+            placeholder=" enter your mobilenumber"
+          /><br />
+          <label for="addressline1">Address</label><br />
+          <input
+            type="text"
+            class="addressline1"
+            id="address"
+            placeholder=" enter your address"
+          /><br />
+         
+          <label for="state">State</label><br />
+          <input
+            type="text"
+            class="state"
+            id="state"
+            placeholder=" enter your State"
+          /><br />
+          <label for="area">City</label><br />
+          <input
+            type="text"
+            class="area"
+            id="area"
+            placeholder=" enter your City"
+          /><br />
+
+          
+          <button class="submit" type="submit" onclick="functionsubmit()">
+            Submit
+          </button>
+          ​
+        </form>
+      </div>
+      ​ ​
+     
+      </div>
+      ​ ​
+    </div>
+    ​ ​ ​
+    <script>
+
+      
+
+        const data = JSON.parse(window.localStorage.getItem("details"))
+
+        
+        const name =document.getElementById("name");
+        const email =document.getElementById("emailid");
+        
+
+       
+        email.value=data["email"];
+        name.value=data["name"];
+
+        
+      
+    </script>
+  </body>
+</html>

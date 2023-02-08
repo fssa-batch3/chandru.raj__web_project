@@ -8,6 +8,59 @@
     <link rel="stylesheet" href="../assets/css/card.css" />
     <link rel="stylesheet" href="../assets/css/style.css" />
   </head>
+  <script>
+    let data = [
+      {
+        img: "../assets/images/set_collection_luxury_wedding_invitation_cards_template.jpg",
+        alt: "supreme",
+        heading: "Supreme Printers",
+        rating: 7,
+        location: "Velachery",
+        contact: 9080776789,
+        bookNow: "Book Now",
+      },
+
+      {
+        img: "../assets/images/4156064.jpg",
+        alt: "grand",
+        heading: "Grand Prints",
+        rating: 9,
+        location: "Pallavaram",
+        contact: 8097776789,
+        bookNow: "Book Now",
+      },
+
+      {
+        img: "../assets/images/4187205.jpg",
+        alt: "card",
+        heading: "Card Creators",
+        rating: 5,
+        location: "Ashok Pillar",
+        contact: 8123476789,
+        bookNow: "Book Now",
+      },
+
+      {
+        img: "../assets/images/rm300-invitation-katie-05.jpg",
+        alt: "wedding",
+        heading: "Wedding Cards",
+        rating: 10,
+        location: "Tambaram",
+        contact: 9080776789,
+        bookNow: "Book Now",
+      },
+
+      {
+        img: "../assets/images/4225425.jpg",
+        alt: "masters",
+        heading: "Printing Masters",
+        rating: 6,
+        location: "Thiruvanmiyur",
+        contact: 9080779854,
+        bookNow: "Book Now",
+      },
+    ];
+  </script>
   <body>
     <header>
       <nav>
@@ -34,7 +87,7 @@
         <div>
           <img
             class="card-pic"
-            alt="image"
+            alt="supreme"
             src="../assets/images/set_collection_luxury_wedding_invitation_cards_template.jpg"
             alt=""
           />
@@ -42,14 +95,14 @@
       </div>
       <div class="main-content">
         <h1>Supreme Printers</h1>
-        <h3>Ratings:7 Stars</h3>
+        <h3>Rating:7 Stars</h3>
         <h3>Location:Velachery</h3>
         <h3>Contact:9080776789</h3>
       </div>
       <div class="btn">
-        <a href="http://127.0.0.1:5500/pages/i-details.html"
-          ><button class="book-now-btn">Book Now</button></a
-        >
+        <a href="http://127.0.0.1:5500/pages/i-details.html">
+          <button class="book-now-btn">Book Now</button>
+        </a>
       </div>
     </div>
 
@@ -58,7 +111,7 @@
         <div>
           <img
             class="card-pic"
-            alt="image"
+            alt="grand"
             src="../assets/images/4156064.jpg"
             alt=""
           />
@@ -66,7 +119,7 @@
       </div>
       <div class="main-content">
         <h1>Grand Prints</h1>
-        <h3>Ratings:9 Stars</h3>
+        <h3>Rating:9 Stars</h3>
         <h3>Location:Pallavaram</h3>
         <h3>Contact:8097776789</h3>
       </div>
@@ -82,7 +135,7 @@
         <div>
           <img
             class="card-pic"
-            alt="image"
+            alt="card"
             src="../assets/images/4187205.jpg"
             alt=""
           />
@@ -90,7 +143,7 @@
       </div>
       <div class="main-content">
         <h1>Card Creators</h1>
-        <h3>Ratings:5 Stars</h3>
+        <h3>Rating:5 Stars</h3>
         <h3>Location:Ashok Pillar</h3>
         <h3>Contact:8123476789</h3>
       </div>
@@ -106,7 +159,7 @@
         <div>
           <img
             class="card-pic"
-            alt="image"
+            alt="wedding"
             src="../assets/images/rm300-invitation-katie-05.jpg"
             alt=""
           />
@@ -114,7 +167,7 @@
       </div>
       <div class="main-content">
         <h1>Wedding Cards</h1>
-        <h3>Ratings:10 Stars</h3>
+        <h3>Rating:10 Stars</h3>
         <h3>Location:Tambaram</h3>
         <h3>Contact:9080776789</h3>
       </div>
@@ -130,7 +183,7 @@
         <div>
           <img
             class="card-pic"
-            alt="image"
+            alt="masters"
             src="../assets/images/4225425.jpg"
             alt=""
           />
@@ -138,7 +191,7 @@
       </div>
       <div class="main-content">
         <h1>Printing Masters</h1>
-        <h3>Ratings:6 Stars</h3>
+        <h3>Rating:6 Stars</h3>
         <h3>Location:Thiruvanmiyur</h3>
         <h3>Contact:9080779854</h3>
       </div>
@@ -148,5 +201,63 @@
         >
       </div>
     </div>
+
+    <script>
+      for (let i = 0; i < data.length; i++) {
+        let main = document.createElement("div");
+        main.setAttribute("class", "main");
+
+        let main_div = document.createElement("div");
+        main_div.setAttribute("class", "main-div");
+        main.append(main_div);
+
+        let MT_div = document.createElement("div");
+        main_div.append(MT_div);
+
+        let card_pic = document.createElement("img");
+        card_pic.setAttribute("class", "card-pic");
+        card_pic.setAttribute("alt", "image");
+        card_pic.setAttribute("src", data[i]["img"]);
+        MT_div.append(card_pic);
+
+        let main_content = document.createElement("div");
+        main_content.setAttribute("class", "main-content");
+        main.append(main_content);
+
+        let main_content_h1 = document.createElement("h1");
+        main_content_h1.innerText = data[i]["heading"];
+        main_content.append(main_content_h1);
+
+        let main_content_h3 = document.createElement("h3");
+        main_content_h3.innerText = data[i]["Rating"];
+        main_content.append(main_content_h3);
+
+        let main_content_h3_2 = document.createElement("h3");
+        main_content_h3_2.innerText = data[i]["Location"];
+        main_content.append(main_content_h3_2);
+
+        let main_content_h3_3 = document.createElement("h3");
+        main_content_h3_3.innerText = data[i]["contact"];
+        main_content.append(main_content_h3_3);
+
+        let btn = document.createElement("div");
+        btn.setAttribute("class", "btn");
+        main.append(btn);
+
+        let btn_a = document.createElement("a");
+        btn_a.setAttribute(
+          "href",
+          "http://127.0.0.1:5500/pages/i-details.html"
+        );
+        btn.append(btn_a);
+
+        let btn_Button = document.createElement("button");
+        btn_Button.setAttribute("class", "book-now-btn");
+        btn_Button.innerText = "Book Now";
+        btn_a.append(btn_Button);
+
+        document.querySelector("body").append(main);
+      }
+    </script>
   </body>
 </html>

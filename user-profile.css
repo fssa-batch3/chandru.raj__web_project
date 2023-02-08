@@ -1,0 +1,27 @@
+#profile {
+    display: flex;
+    align-items: center;
+    margin: 50px 0;
+  }
+  
+  #avatar {
+    flex: 0 0 100px;
+    margin-right: 20px;
+    text-align: center;
+  }
+  
+  #avatar img {
+    width: 100%;
+    border-radius: 50%;
+  }
+  
+  #name h1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  #details p {
+    margin: 0;
+    font-size: 16px;
+  }
