@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="../assets/css/sign-up.css" />
   </head>
   <body>
-    <body>
-      <!-- this page is represented by the logi page -->
+    <!-- this page is represented by the logi page -->
+    <form>
       <div class="all">
         <div class="main">
           <div class="all-1">
@@ -28,7 +28,15 @@
               </div>
               <div class="name">
                 <p>Full name</p>
-                <input type="Name" id="name" placeholder="Name" />
+                <input
+                  type="Name"
+                  id="name"
+                  placeholder="Name"
+                  autocomplete="gghgjhfv"
+                  title="Name is required"
+                  pattern="[a-zA-Z]{1,32}"
+                  required
+                />
               </div>
               <div class="email">
                 <p>Email address</p>
@@ -37,17 +45,38 @@
                   id="email"
                   class="test"
                   placeholder="email"
+                  autocomplete="gghgjhfv"
+                  required
                 />
               </div>
               <div class="password">
                 <p>Enter-password</p>
-                <input type="password" id="password" placeholder="password" />
+                <input
+                  type="password"
+                  id="password"
+                  placeholder="password"
+                  autocomplete="gghgjhfv"
+                  required
+                  title=" Password required"
+                />
+              </div>
+
+              <div class="password">
+                <p>Confirm-password</p>
+                <input
+                  type="password"
+                  id="confirm-password"
+                  placeholder="password"
+                  autocomplete="gghgjhfv"
+                  required
+                  title=" Password required"
+                />
               </div>
               <!-- to represent button -->
               <div class="button">
-                <button class="btn1">Forgot password?</button>
-                <a onclick="submitLogin()"
-                  ><button class="btn1">login</button></a
+                <!-- <button class="btn1">Forgot password?</button> -->
+                <a onclick="submitLogin()" type="submit"
+                  ><button class="btn1">Submit</button></a
                 >
               </div>
 
@@ -58,25 +87,40 @@
           </div>
         </div>
       </div>
-      <script>
-        function submitLogin() {
-          let arr = [];
-          if (localStorage.getItem("local") != null) {
-            arr = JSON.parse(localStorage.getItem("local"));
-          }
-          const email = document.getElementById("email").value;
-          const password = document.getElementById("password").value;
-          const name = document.getElementById("name").value;
+    </form>
+    <script>
+      function submitLogin() {
+        let arr = [];
+        if (localStorage.getItem("local") != null) {
+          arr = JSON.parse(localStorage.getItem("local"));
+        }
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        const confirmpassword =
+          document.getElementById("confirm-password").value;
 
-          const chan = new Object();
-          chan.email = email;
-          chan.pass = password;
-          chan.name = name;
+        let match = false;
+        for (let i = 0; i < arr.length; i++) {
+          if (email == arr[i]["email"]) {
+            match = true;
+            break;
+          }
+        }
+        if (match == true) {
+          alert("Email id already exist");
+        } else {
+          const chan = {
+            email: email,
+            pass: password,
+            name: name,
+          };
           arr.push(chan);
           const str = JSON.stringify(arr);
           localStorage.setItem("local", str);
+          window.location.href = "pages\login.html";
         }
-      </script>
-    </body>
+      }
+    </script>
   </body>
 </html>

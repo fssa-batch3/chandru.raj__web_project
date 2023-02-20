@@ -22,7 +22,7 @@
               />
             </div>
             <!-- to represent logi page -->
-            <div class="para">
+            <form class="para" onsubmit="submitLogin()">
               <div>
                 <h1>Login Here</h1>
               </div>
@@ -34,43 +34,56 @@
                   id="email"
                   class="test"
                   placeholder="email"
+                  autocomplete="gghgjhfv"
+                  required
                 />
               </div>
               <div class="password">
                 <p>Enter-password</p>
-                <input type="password" id="password" placeholder="password" />
+                <input
+                  type="password"
+                  id="password"
+                  placeholder="password"
+                  autocomplete="gghgjhfv"
+                  <!--
+                  pattern="[(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$ -->
+                ]"
+                  required
+                  title=" Password required"
+                />
               </div>
               <!-- to represent button -->
               <div class="button">
                 <button class="btn1">Forgot password?</button>
-                <a onclick="submitLogin()"
-                  ><button class="btn1">login</button></a
-                >
+                <a><button class="btn1">login</button></a>
               </div>
 
               <div class="sign">
                 <a href="./sign-in.html">Don't have an account ?</a>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>
       <script>
         function submitLogin() {
-          const email = document.getElementById("email").value;
+          const email1 = document.getElementById("email").value;
           const password = document.getElementById("password").value;
 
           const champ = localStorage.getItem("local");
           const obj = JSON.parse(champ);
 
-          const tofind = obj.find((h) => h["email"] == email);
+          console.log(obj);
+          const tofind = obj.find((h) => h["email"] == email1);
 
-          console.log(tofind);
-
-          localStorage.setItem("details", JSON.stringify(tofind));
-
-          if (tofind["email"] == email && tofind["pass"] == password) {
-            alert("Succesfully loged in");
+          if (tofind !== undefined && tofind !== null) {
+            console.log(tofind["pass"]);
+            if (tofind["pass"] != password) {
+              alert("Password is wrong");
+            } else {
+              alert("Succesfully loged in");
+              localStorage.setItem("details", JSON.stringify(tofind["email"]));
+            }
           } else {
             alert("Something went wrong");
           }

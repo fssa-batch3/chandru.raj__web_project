@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>User Profile | freshstocks</title>
+    <title>User Profile</title>
     <link rel="stylesheet" href="userprofile.css" />
     <link rel="stylesheet" href="homepage.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -18,7 +18,7 @@
     
       <div class="userdetails">
         <h1 class="profileh1">User Profile</h1>
-        <form action="homepage.html">
+        <form id="form">
           <div class="namesurflex">
             <div>
               <label for="name">Name</label><br />
@@ -77,8 +77,12 @@
           /><br />
 
           
-          <button class="submit" type="submit" onclick="functionsubmit()">
+          <button class="submit" type="submit" >
             Submit
+          </button>
+
+          <button class="submit" id="delete" type="submit" >
+            Delete
           </button>
           ​
         </form>
@@ -93,19 +97,110 @@
 
       
 
-        const data = JSON.parse(window.localStorage.getItem("details"))
+        // const data = JSON.parse(window.localStorage.getItem("details"))
 
         
-        const name =document.getElementById("name");
-        const email =document.getElementById("emailid");
+        // const name =document.getElementById("name");
+        // const email =document.getElementById("emailid");
         
 
        
-        email.value=data["email"];
-        name.value=data["name"];
+        // email.value=data["email"];
+        // name.value=data["name"];
 
+
+
+        const user_email = JSON.parse(window.localStorage.getItem("details"))
+      const user_details = JSON.parse(window.localStorage.getItem("local"))
+      let get_obj = user_details.find(function(user_obj){
+        let check_email = user_obj["email"]
+        if(user_email===check_email){
+          return true ;
+        }
+      });
+      console.log(get_obj)
+      const fname = document.getElementById("name");
+     
+      const mail = document.getElementById("emailid");
+   
+      fname.value =  get_obj["name"] ;
+      mail.value  =  user_email ;
+
+      let form = document.getElementById("form");
+      form.addEventListener("submit" , function(event){
+      event.preventDefault()
+      let fname = document.getElementById("name").value;
+      let lname = document.getElementById("surname").value;
+      let mail = document.getElementById("emailid").value;
+      let phone = document.getElementById("mobilenumber").value;
+      let address= document.getElementById("address").value;
+      let state = document.getElementById("state").value;
+      let country = document.getElementById("area").value;
+     
+      let new_data = {
+        fname,
+        lname,
+        mail,
+        phone,
+        address, 
+        state,
+        area,
+       
+      };
+      // if( mail.value != user_email ){
+      //   alert("You can't change the email-id")
+      //   return
+      // }
+    let updates = Object.assign(get_obj,new_data);
+    console.log(updates);
+    let index = user_details.indexOf(get_obj)
+    // console.log(index);
+    user_details[index] = updates;
+    localStorage.setItem("local", JSON.stringify(user_details))
+    alert("You have successfully updated your account details!");
+    location.reload()
+    });
+    // const user_email = JSON.parse(window.localStorage.getItem("details"))
+    let check = true;
+    const presend_details = JSON.parse(window.localStorage.getItem("local"))
+      let get_presend = user_details.find(function(user_obj){
+        let check_email = user_obj["email"]
+        if(user_email===check_email){
+      let fname1 = document.getElementById("name");
+      let lname1 = document.getElementById("surname");
+      let mail1 = document.getElementById("emailid");
+      let phone1 = document.getElementById("mobilenumber");
+      let address1 = document.getElementById("address");
+      let state1 = document.getElementById("state");
+      let country1 = document.getElementById("area");
+     
+      fname1.value  = user_obj["fname"];
+      lname1.value  = user_obj["lname"];
+      mail1.value  = user_obj["email"];
+      phone1.value  = user_obj["phone"];
+      address1.value  = user_obj["address"];
+      state1.value  = user_obj["state"];
+      country1.value  = user_obj["area"];
+     
+        }
+      });
+      let delete_user = document.getElementById("delete")
+      delete_user.addEventListener("click" , function(event){
+      event.preventDefault()
+      let index = user_details.indexOf(get_obj)
+    let msg =  confirm("Are you sure you want to delete this account")
+      if(msg !== true){
+        return
+      } else{
+        user_details.splice(index,1)
+        console.log(user_details);
+        localStorage.setItem("local",JSON.stringify(user_details))
+        window.location.href ="../pages/sign-up.html";
+      }
+    });
         
       
     </script>
   </body>
+  <link href="">
 </html>

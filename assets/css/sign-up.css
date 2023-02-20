@@ -68,3 +68,14 @@ body {
   border: none;
   border-radius: 20px;
 }
+
+input:valid,
+select:valid {
+  border-width: 2px;
+  border-color: green;
+}
+input:invalid,
+select:invalid {
+  border-width: 2px;
+  border-color: red;
+}
