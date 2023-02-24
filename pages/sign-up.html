@@ -99,6 +99,7 @@
         const password = document.getElementById("password").value;
         const confirmpassword =
           document.getElementById("confirm-password").value;
+        const id = Date.now();
 
         let match = false;
         for (let i = 0; i < arr.length; i++) {
@@ -114,6 +115,7 @@
             email: email,
             pass: password,
             name: name,
+            id: id,
           };
           arr.push(chan);
           const str = JSON.stringify(arr);
