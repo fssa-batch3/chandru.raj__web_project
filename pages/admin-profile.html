@@ -1,0 +1,105 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../assets/css/userprofile.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form id="form">
+      <div class="inputBox">
+        <input id="image_url" type="text" name="" required="required" />
+        <span>Image Url</span>
+      </div>
+      <div class="inputBox">
+        <input id="printer_name" type="text" name="" required="required" />
+        <span>Printers Name</span>
+      </div>
+      <div class="inputBox">
+        <input id="rating" type="number" name="" required="required" />
+        <span>Ratings</span>
+      </div>
+      <div class="inputBox">
+        <input id="location" type="text" name="" required="required" />
+        <span>Location</span>
+      </div>
+      <div class="inputBox">
+        <input id="contact" type="text" name="" required="required" />
+        <span>Contact</span>
+      </div>
+      ​
+      <button type="submit" id="edit" class="btn5">Edit</button>
+      <button type="submit" onclick="del()" id="edit" class="btn5">
+        Delete
+      </button>
+    </form>
+  </body>
+
+  <script>
+    const printerId = JSON.parse(localStorage.getItem("updates"));
+    console.log("printerID" + printerId);
+    let url = window.location.search;
+    let urlParams = new URLSearchParams(url);
+    let id = urlParams.get("id");
+    console.log("id" + id);
+
+    const found = printerId.find((element) => element.id == id);
+    console.log(found);
+
+    let img = document.getElementById("image_url");
+    let printer_name = document.getElementById("printer_name");
+    let rating = document.getElementById("rating");
+    let location1 = document.getElementById("location");
+    let contact = document.getElementById("contact");
+
+    img.value = found["image"];
+    printer_name.value = found["printer_name"];
+    rating.value = found["rate"];
+    location1.value = found["location"];
+    contact.value = found["contact"];
+
+    let edit = document.getElementById("edit");
+    edit.addEventListener("click", (event) => {
+      event.preventDefault();
+
+      let img1 = document.getElementById("image_url").value;
+      let printer_name1 = document.getElementById("printer_name").value;
+      let rating1 = document.getElementById("rating").value;
+      let location2 = document.getElementById("location").value;
+      let contact1 = document.getElementById("contact").value;
+
+      let newObject = {
+        image: img1,
+        printer_name: printer_name1,
+        rate: rating1,
+        location: location2,
+        contact: contact1,
+      };
+      console.log(found);
+      console.log(newObject);
+
+      let edit_card = Object.assign(found, newObject);
+      let index = printerId.indexOf(found);
+
+      printerId[index] = edit_card;
+
+      localStorage.setItem("updates", JSON.stringify(printerId));
+    });
+
+    function del() {
+      let index = printerId.indexOf(found);
+      let msg = confirm("Are you sure you want to delete this card");
+      if (msg == true) {
+        printerId.splice(index, 1);
+        console.log(printerId);
+        localStorage.setItem("updates", JSON.stringify(printerId));
+        location.reload();
+        return;
+      } else {
+        return;
+      }
+    }
+    // find.index
+  </script>
+</html>

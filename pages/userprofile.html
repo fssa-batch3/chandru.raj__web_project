@@ -109,8 +109,7 @@
         // name.value=data["name"];
 
 
-
-        const user_email = JSON.parse(window.localStorage.getItem("details"))
+      const user_email = JSON.parse(window.localStorage.getItem("details"))
       const user_details = JSON.parse(window.localStorage.getItem("local"))
       let get_obj = user_details.find(function(user_obj){
         let check_email = user_obj["email"]
@@ -136,6 +135,7 @@
       let address= document.getElementById("address").value;
       let state = document.getElementById("state").value;
       let country = document.getElementById("area").value;
+
      
       let new_data = {
         fname,
