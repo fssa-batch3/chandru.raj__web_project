@@ -154,7 +154,7 @@
         >
       </div>
     </div>
-
+    <div></div>
     <div class="main">
       <div class="main-div">
         <div>
@@ -202,6 +202,59 @@
         >
       </div>
     </div>
-    <script></script>
+    <script>
+      for (let i = 0; i < data.legth; i++) {
+        let main = document.createElement("div");
+        main_div.setAttribute("class", "main-div");
+        main.append(main_div);
+
+        let MT_div = document.createElement("div");
+        main_div.append(MT_div);
+
+        let cat_pic = document.createElement("img");
+        cat_pic.setAttribute("class", "cat_pic");
+        cat_pic.setAttribute("alt", "image");
+        cat_pic.setAttribute("src", data[i]["img"]);
+        MT_div.append(cat_pic);
+
+        let main_content = document.createElement("div");
+        main_content.setAttribute("class", "main-content");
+        main.append(main_content);
+
+        let main_content_h1 = document.createElement("h1");
+        main_content_h1.innerText = data[i]["heading"];
+        main.append(main_content_h1);
+
+        let main_content_h3 = document.createElement("h3");
+        main_content_h3.innerText = data[i]["Rating"];
+        main_content.append(main_content_h3);
+
+        let main_content_h3_2 = document.createElement("h3");
+        main_content_h3_2.innerText = data[i]["Location"];
+        main_content.append(main_content_h3_2);
+
+        let main_content_h3_3 = document.createElement("h3");
+        main_content_h3_3.innerText = data[i]["contact"];
+        main_content.append(main_content_h3_3);
+
+        let btn = document.createElement("div");
+        btn.setAttribute("class", "btn");
+        main.append(btn);
+
+        let btn_a = document.createElement("a");
+        btn_a.setAttribute(
+          "href",
+          "http://127.0.0.1:5500/pages/i-details.html"
+        );
+        btn.append(btn_a);
+
+        let btn_Button = document.createElement("button");
+        btn_Button.setAttribute("class", "book-now-btn");
+        btn_Button.innerText = "Book Now";
+        btn_a.append(btn_Button);
+
+        document.querySelector("body").append(main);
+      }
+    </script>
   </body>
 </html>
