@@ -9,57 +9,59 @@
     <link rel="stylesheet" href="../assets/css/style.css" />
   </head>
   <script>
-    let data = [
-      {
-        img: "../assets/images/set_collection_luxury_wedding_invitation_cards_template.jpg",
-        alt: "supreme",
-        heading: "Supreme Printers",
-        rating: 7,
-        location: "Velachery",
-        contact: 9080776789,
-        bookNow: "Book Now",
-      },
+    // let data = [
+    //   {
+    //     img: "../assets/images/set_collection_luxury_wedding_invitation_cards_template.jpg",
+    //     alt: "supreme",
+    //     heading: "Supreme Printers",
+    //     rating: 7,
+    //     location: "Velachery",
+    //     contact: 9080776789,
+    //     bookNow: "Book Now",
+    //   },
 
-      {
-        img: "../assets/images/4156064.jpg",
-        alt: "grand",
-        heading: "Grand Prints",
-        rating: 9,
-        location: "Pallavaram",
-        contact: 8097776789,
-        bookNow: "Book Now",
-      },
+    //   {
+    //     img: "../assets/images/4156064.jpg",
+    //     alt: "grand",
+    //     heading: "Grand Prints",
+    //     rating: 9,
+    //     location: "Pallavaram",
+    //     contact: 8097776789,
+    //     bookNow: "Book Now",
+    //   },
 
-      {
-        img: "../assets/images/4187205.jpg",
-        alt: "card",
-        heading: "Card Creators",
-        rating: 5,
-        location: "Ashok Pillar",
-        contact: 8123476789,
-        bookNow: "Book Now",
-      },
+    //   {
+    //     img: "../assets/images/4187205.jpg",
+    //     alt: "card",
+    //     heading: "Card Creators",
+    //     rating: 5,
+    //     location: "Ashok Pillar",
+    //     contact: 8123476789,
+    //     bookNow: "Book Now",
+    //   },
 
-      {
-        img: "../assets/images/rm300-invitation-katie-05.jpg",
-        alt: "wedding",
-        heading: "Wedding Cards",
-        rating: 10,
-        location: "Tambaram",
-        contact: 9080776789,
-        bookNow: "Book Now",
-      },
+    //   {
+    //     img: "../assets/images/rm300-invitation-katie-05.jpg",
+    //     alt: "wedding",
+    //     heading: "Wedding Cards",
+    //     rating: 10,
+    //     location: "Tambaram",
+    //     contact: 9080776789,
+    //     bookNow: "Book Now",
+    //   },
 
-      {
-        img: "../assets/images/4225425.jpg",
-        alt: "masters",
-        heading: "Printing Masters",
-        rating: 6,
-        location: "Thiruvanmiyur",
-        contact: 9080779854,
-        bookNow: "Book Now",
-      },
-    ];
+    //   {
+    //     img: "../assets/images/4225425.jpg",
+    //     alt: "masters",
+    //     heading: "Printing Masters",
+    //     rating: 6,
+    //     location: "Thiruvanmiyur",
+    //     contact: 9080779854,
+    //     bookNow: "Book Now",
+    //   },
+    // ];
+
+    let data = JSON.parse(localStorage.getItem("updates"));
   </script>
   <body>
     <header>
@@ -217,7 +219,7 @@
         let card_pic = document.createElement("img");
         card_pic.setAttribute("class", "card-pic");
         card_pic.setAttribute("alt", "image");
-        card_pic.setAttribute("src", data[i]["img"]);
+        card_pic.setAttribute("src", data[i]["image"]);
         MT_div.append(card_pic);
 
         let main_content = document.createElement("div");
@@ -225,15 +227,15 @@
         main.append(main_content);
 
         let main_content_h1 = document.createElement("h1");
-        main_content_h1.innerText = data[i]["heading"];
+        main_content_h1.innerText = data[i]["printer_name"];
         main_content.append(main_content_h1);
 
         let main_content_h3 = document.createElement("h3");
-        main_content_h3.innerText = data[i]["Rating"];
+        main_content_h3.innerText = data[i]["rate"];
         main_content.append(main_content_h3);
 
         let main_content_h3_2 = document.createElement("h3");
-        main_content_h3_2.innerText = data[i]["Location"];
+        main_content_h3_2.innerText = data[i]["location"];
         main_content.append(main_content_h3_2);
 
         let main_content_h3_3 = document.createElement("h3");
