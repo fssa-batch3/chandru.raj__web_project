@@ -9,7 +9,7 @@
   </head>
   <body>
     <!-- this page is represented by the logi page -->
-    <form>
+    <form action="login.html">
       <div class="all">
         <div class="main">
           <div class="all-1">
@@ -72,6 +72,10 @@
                   title=" Password required"
                 />
               </div>
+              <select name="Catagory" id="Catagory">
+                <option value="Buyer">Customer</option>
+                <option value="Sellar">Service</option>
+              </select>
               <!-- to represent button -->
               <div class="button">
                 <!-- <button class="btn1">Forgot password?</button> -->
@@ -99,6 +103,7 @@
         const password = document.getElementById("password").value;
         const confirmpassword =
           document.getElementById("confirm-password").value;
+        let Catagory = document.getElementById("Catagory").value;
         const id = Date.now();
 
         let match = false;
@@ -116,13 +121,15 @@
             pass: password,
             name: name,
             id: id,
+            Catagory,
           };
           arr.push(chan);
           const str = JSON.stringify(arr);
           localStorage.setItem("local", str);
-          window.location.href = "pages\login.html";
+          location.href = "../pages/login.html";
         }
       }
     </script>
+    <a href=""></a>
   </body>
 </html>

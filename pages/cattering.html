@@ -5,62 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cattering</title>
-    <link rel="stylesheet" href="../assets/css/cat.css" />
+    <link rel="stylesheet" href="../assets/css/card.css" />
     <link rel="stylesheet" href="../assets/css/style.css" />
   </head>
-  <script>
-    let data = [
-      {
-        img: "../assets/images/gourmet-table-white-dish-catering.jpg",
-        alt: "tastey",
-        heading: "Tastey Catering",
-        rating: 10,
-        location: "Perambur",
-        contact: 8970675690,
-        bookNow: "Book Now",
-      },
-
-      {
-        img: "../assets/images/wedding-reception-hall-with-elegant-table-setting-with-candles.jpg",
-        alt: "luxury",
-        heading: "Luxury Catering",
-        rating: 8,
-        location: "Vandalur",
-        contact: 9076675690,
-        bookNow: "Book Now",
-      },
-
-      {
-        img: "../assets/images/festive-table-restaurant-is-decorated-with-candles-flowers.jpg",
-        alt: "thamizh",
-        heading: "Thamizh Foods",
-        rating: 10,
-        location: "Red Hills",
-        contact: 9076575690,
-        bookNow: "Book Now",
-      },
-
-      {
-        img: "../assets/images/buffet-ready-dinner.jpg",
-        alt: "best",
-        heading: "Best Taste",
-        rating: 5,
-        location: "Anna Nagar",
-        contact: 8765675690,
-        bookNow: "Book Now",
-      },
-
-      {
-        img: "../assets/images/sparkling-glassware-stands-long-table-prepared-wedding-di.jpg",
-        alt: "our",
-        heading: "Our Cattering",
-        rating: 9,
-        location: "Velachery",
-        contact: 8970675690,
-        bookNow: "Book Now",
-      },
-    ];
-  </script>
 
   <body>
     <header>
@@ -83,7 +30,7 @@
       </nav>
     </header>
 
-    <div class="main">
+    <!-- <div class="main">
       <div class="main-div">
         <div>
           <img
@@ -93,8 +40,8 @@
             alt=""
           />
         </div>
-      </div>
-      <div class="main-content">
+      </div> -->
+    <!-- <div class="main-content">
         <h1>Tastey Catering</h1>
         <h3>Rating:10 Stars</h3>
         <h3>Location:Perambur</h3>
@@ -201,20 +148,81 @@
           ><button class="book-now-btn">Book Now</button></a
         >
       </div>
-    </div>
+    </div> -->
     <script>
-      for (let i = 0; i < data.legth; i++) {
+      // let movietype = [
+      // {
+      //   image_url: "../assets/images/gourmet-table-white-dish-catering.jpg",
+      //   alt: "tastey",
+      //   printer_name: "Tastey Catering",
+      //   rating: 10,
+      //   location: "Perambur",
+      //   contact: 8970675690,
+      //   bookNow: "Book Now",
+      // },
+      // {
+      //   image_url:
+      //     "../assets/images/wedding-reception-hall-with-elegant-table-setting-with-candles.jpg",
+      //   alt: "luxury",
+      //   printer_name: "Luxury Catering",
+      //   rating: 8,
+      //   location: "Vandalur",
+      //   contact: 9076675690,
+      //   bookNow: "Book Now",
+      // },
+      // {
+      //   image_url:
+      //     "../assets/images/festive-table-restaurant-is-decorated-with-candles-flowers.jpg",
+      //   alt: "thamizh",
+      //   printer_name: "Thamizh Foods",
+      //   rating: 10,
+      //   location: "Red Hills",
+      //   contact: 9076575690,
+      //   bookNow: "Book Now",
+      // },
+      // {
+      //   image_url: "../assets/images/buffet-ready-dinner.jpg",
+      //   alt: "best",
+      //   printer_name: "Best Taste",
+      //   rating: 5,
+      //   location: "Anna Nagar",
+      //   contact: 8765675690,
+      //   bookNow: "Book Now",
+      // },
+      // {
+      //   image_url:
+      //     "../assets/images/sparkling-glassware-stands-long-table-prepared-wedding-di.jpg",
+      //   alt: "our",
+      //   printer_name: "Our Cattering",
+      //   rating: 9,
+      //   location: "Velachery",
+      //   contact: 8970675690,
+      //   bookNow: "Book Now",
+      // },
+      // ];
+
+      let create_card = JSON.parse(localStorage.getItem("updates"));
+      console.log(create_card);
+
+      let movietype = create_card.filter((h) => h.Catagory == "Card");
+      console.log(movietype);
+      console.log(movietype.length);
+
+      for (let i = 0; i < movietype.length; i++) {
         let main = document.createElement("div");
+        main.setAttribute("class", "main");
+
+        let main_div = document.createElement("div");
         main_div.setAttribute("class", "main-div");
         main.append(main_div);
 
         let MT_div = document.createElement("div");
-        main_div.append(MT_div);
+        main.append(MT_div);
 
         let cat_pic = document.createElement("img");
-        cat_pic.setAttribute("class", "cat_pic");
+        cat_pic.setAttribute("class", "card_pic");
         cat_pic.setAttribute("alt", "image");
-        cat_pic.setAttribute("src", data[i]["img"]);
+        cat_pic.setAttribute("src", movietype[i]["image_url"]);
         MT_div.append(cat_pic);
 
         let main_content = document.createElement("div");
@@ -222,19 +230,19 @@
         main.append(main_content);
 
         let main_content_h1 = document.createElement("h1");
-        main_content_h1.innerText = data[i]["heading"];
-        main.append(main_content_h1);
+        main_content_h1.innerText = movietype[i]["printer_name"];
+        main_content.append(main_content_h1);
 
         let main_content_h3 = document.createElement("h3");
-        main_content_h3.innerText = data[i]["Rating"];
+        main_content_h3.innerText = movietype[i]["rating"];
         main_content.append(main_content_h3);
 
         let main_content_h3_2 = document.createElement("h3");
-        main_content_h3_2.innerText = data[i]["Location"];
+        main_content_h3_2.innerText = movietype[i]["location"];
         main_content.append(main_content_h3_2);
 
         let main_content_h3_3 = document.createElement("h3");
-        main_content_h3_3.innerText = data[i]["contact"];
+        main_content_h3_3.innerText = movietype[i]["contact"];
         main_content.append(main_content_h3_3);
 
         let btn = document.createElement("div");

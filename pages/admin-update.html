@@ -220,7 +220,7 @@
         let card_pic = document.createElement("img");
         card_pic.setAttribute("class", "card-pic");
         card_pic.setAttribute("alt", "image");
-        card_pic.setAttribute("src", data[i]["image"]);
+        card_pic.setAttribute("src", data[i]["image_url"]);
         MT_div.append(card_pic);
 
         let main_content = document.createElement("div");
@@ -232,7 +232,7 @@
         main_content.append(main_content_h1);
 
         let main_content_h3 = document.createElement("h3");
-        main_content_h3.innerText = data[i]["rate"];
+        main_content_h3.innerText = data[i]["rating"];
         main_content.append(main_content_h3);
 
         let main_content_h3_2 = document.createElement("h3");
@@ -248,7 +248,7 @@
         main.append(btn);
 
         let btn_a = document.createElement("a");
-        btn_a.setAttribute("href", `admin-profile.html?id=${data[i]["id"]}`);
+        btn_a.setAttribute("href", `edit-form.html?id=${data[i]["id"]}`);
         btn.append(btn_a);
 
         let btn_Button = document.createElement("button");

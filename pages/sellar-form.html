@@ -28,8 +28,13 @@
         <input id="contact" type="text" name="" required="required" />
         <span>Contact</span>
       </div>
+      <select name="Catagory" id="Catagory">
+        <option value="Card">Invitation Cards</option>
+        <option value="Catering">Catering Service</option>
+        <option value="Hall">Halls</option>
+      </select>
       ​
-      <button type="submit" class="btn5">Send</button>
+      <button type="submit" onclick="admin_update()" class="btn5">Send</button>
     </form>
     <script>
       document
@@ -53,15 +58,17 @@
 
           let contact = document.getElementById("contact").value;
 
+          let Catagory = document.getElementById("Catagory").value;
           let id = Date.now();
 
           let updates = {
-            image: image_url,
-            printer_name: printer_name,
-            rate: rating,
-            location: location,
-            contact: contact,
-            id: id,
+            image_url,
+            printer_name,
+            rating,
+            location,
+            contact,
+            id,
+            Catagory,
           };
           // console.log(all);
           all.push(updates);
@@ -71,6 +78,10 @@
 
           // location.href = "../pages/hollywood.html";
         });
+
+      function admin_update() {
+        location.href = "admin-update.html";
+      }
     </script>
   </body>
 </html>

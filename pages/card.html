@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../assets/css/style.css" />
   </head>
   <script>
-    // let data = [
+    // let movietype = [
     //   {
     //     img: "../assets/images/set_collection_luxury_wedding_invitation_cards_template.jpg",
     //     alt: "supreme",
@@ -61,7 +61,7 @@
     //   },
     // ];
 
-    let data = JSON.parse(localStorage.getItem("updates"));
+    // let movietype = JSON.parse(localStorage.getItem("updates"));
   </script>
   <body>
     <header>
@@ -205,7 +205,14 @@
     </div> -->
 
     <script>
-      for (let i = 0; i < data.length; i++) {
+      let create_card = JSON.parse(localStorage.getItem("updates"));
+      console.log(create_card);
+
+      let movietype = create_card.filter((h) => h.Catagory == "Card");
+      console.log(movietype);
+      console.log(movietype.length);
+
+      for (let i = 0; i < movietype.length; i++) {
         let main = document.createElement("div");
         main.setAttribute("class", "main");
 
@@ -219,7 +226,7 @@
         let card_pic = document.createElement("img");
         card_pic.setAttribute("class", "card-pic");
         card_pic.setAttribute("alt", "image");
-        card_pic.setAttribute("src", data[i]["image"]);
+        card_pic.setAttribute("src", movietype[i]["image_url"]);
         MT_div.append(card_pic);
 
         let main_content = document.createElement("div");
@@ -227,19 +234,19 @@
         main.append(main_content);
 
         let main_content_h1 = document.createElement("h1");
-        main_content_h1.innerText = data[i]["printer_name"];
+        main_content_h1.innerText = movietype[i]["printer_name"];
         main_content.append(main_content_h1);
 
         let main_content_h3 = document.createElement("h3");
-        main_content_h3.innerText = data[i]["rate"];
+        main_content_h3.innerText = movietype[i]["rating"];
         main_content.append(main_content_h3);
 
         let main_content_h3_2 = document.createElement("h3");
-        main_content_h3_2.innerText = data[i]["location"];
+        main_content_h3_2.innerText = movietype[i]["location"];
         main_content.append(main_content_h3_2);
 
         let main_content_h3_3 = document.createElement("h3");
-        main_content_h3_3.innerText = data[i]["contact"];
+        main_content_h3_3.innerText = movietype[i]["contact"];
         main_content.append(main_content_h3_3);
 
         let btn = document.createElement("div");
