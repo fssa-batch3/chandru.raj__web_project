@@ -9,7 +9,7 @@
   </head>
   <body>
     <!-- this page is represented by the logi page -->
-    <form action="login.html">
+    <form id="register">
       <div class="all">
         <div class="main">
           <div class="all-1">
@@ -57,7 +57,7 @@
                   placeholder="password"
                   autocomplete="gghgjhfv"
                   required
-                  title=" Password required"
+                  title="Password required"
                 />
               </div>
 
@@ -79,9 +79,8 @@
               <!-- to represent button -->
               <div class="button">
                 <!-- <button class="btn1">Forgot password?</button> -->
-                <a onclick="submitLogin()" type="submit"
-                  ><button class="btn1">Submit</button></a
-                >
+
+                <button type="submit" class="btn1">Submit</button>
               </div>
 
               <!-- <div class="sign">
@@ -93,43 +92,58 @@
       </div>
     </form>
     <script>
-      function submitLogin() {
+      let register = document.querySelector("#register");
+      console.log(register);
+
+      register.addEventListener("submit", function (e) {
+        e.preventDefault();
+        console.log("chandru");
         let arr = [];
-        if (localStorage.getItem("local") != null) {
+        if (localStorage.getItem("local") !== null) {
           arr = JSON.parse(localStorage.getItem("local"));
         }
-        const name = document.getElementById("name").value;
-        const email = document.getElementById("email").value;
-        const password = document.getElementById("password").value;
-        const confirmpassword =
-          document.getElementById("confirm-password").value;
-        let Catagory = document.getElementById("Catagory").value;
-        const id = Date.now();
+
+        let name = document.getElementById("name").value.trim();
+        let email = document.getElementById("email").value.trim();
+        console.log(email);
+        let password = document.getElementById("password").value.trim();
+        let confirmpassword = document
+          .getElementById("confirm-password")
+          .value.trim();
+        let Catagory = document.getElementById("Catagory").value.trim();
+        let id = Date.now();
 
         let match = false;
+
         for (let i = 0; i < arr.length; i++) {
-          if (email == arr[i]["email"]) {
+          if (arr[i]["email"] === email) {
             match = true;
             break;
+          } else {
+            match = false;
           }
         }
-        if (match == true) {
+
+        if (match === true) {
           alert("Email id already exist");
         } else {
-          const chan = {
+          let chan = {
             email: email,
             pass: password,
             name: name,
             id: id,
             Catagory,
           };
+
+          console.log(chan);
+          console.log("chandru");
           arr.push(chan);
-          const str = JSON.stringify(arr);
+          let str = JSON.stringify(arr);
           localStorage.setItem("local", str);
-          location.href = "../pages/login.html";
+          alert("success");
+          location.href = "./login.html";
         }
-      }
+      });
     </script>
-    <a href=""></a>
   </body>
 </html>

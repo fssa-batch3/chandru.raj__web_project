@@ -22,7 +22,7 @@
               />
             </div>
             <!-- to represent logi page -->
-            <form class="para" onsubmit="submitLogin()">
+            <form class="para">
               <div>
                 <h1>Login Here</h1>
               </div>
@@ -55,18 +55,26 @@
               <!-- to represent button -->
               <div class="button">
                 <button class="btn1">Forgot password?</button>
-                <a><button class="btn1">login</button></a>
+                <a><button class="btn1" type="submit">login</button></a>
               </div>
 
-              <div class="sign">
-                <a href="../pages/sign-up.html">Don't have an account ?</a>
-              </div>
+          
             </form>
+            <div class="sign">
+              <a href="../pages/sign-up.html">Don't have an account ?</a>
+            </div>
           </div>
         </div>
       </div>
       <script>
-        function submitLogin() {
+
+        let logForm = document.querySelector(".para")
+
+
+        logForm.addEventListener("submit", (e)=> {
+
+      
+    e.preventDefault()
           const email1 = document.getElementById("email").value;
           const password = document.getElementById("password").value;
 
@@ -76,26 +84,55 @@
           console.log(obj);
           const tofind = obj.find((h) => h["email"] == email1);
 
-          if (tofind["Catagory"] == "Buyer") {
-            location.href = "/index.html";
-          }
-          if (tofind["Catagory"] == "Sellar") {
-            location.href = "sellar-form.html";
-          }
 
           if (tofind !== undefined && tofind !== null) {
             console.log(tofind["pass"]);
-            if (tofind["pass"] != password) {
-              alert("Password is wrong");
-            } else {
+
+            if(tofind["email"] !== email1){
+              alert("user not exist")
+            }
+
+            else if (tofind["pass"] !== password) {
+             return  alert("Password is wrong");
+            } 
+
+            else {
               alert("Succesfully loged in");
               localStorage.setItem("details", JSON.stringify(tofind["email"]));
+              if (tofind["Catagory"] == "Buyer") {
+            location.href = "index.logi.html";}
+            if (tofind["Catagory"] == "Sellar") {
+            // location.href = "sellar-form.html";
+            let check = false
+          
+          let mail = JSON.parse(localStorage.getItem("local"))
+          let get_data = mail.find(function(l){
+            let findEmail = l["email"] 
+            if(findEmail== email1){
+                      check = true
             }
-          } else {
-            alert("Something went wrong");
-         
+          }) 
+          if (check == true) {
+            location.href="index2.html"
+        
+          }
+          else{
+            location.href = "sellar-form.html";
+          }  
+
+          }
+          // let mail = JSON.parse(localStorage.getItem("details"));
+          // let local = JSON.parse(localStorage.getItem("local"));
+          // let get_data = local.find(function (L) {
+          //   return L.email == mail;
+
+        
+          } 
+
+        
+  
         }
-      }
+      })
          
       </script>
     

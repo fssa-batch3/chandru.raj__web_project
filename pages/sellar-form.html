@@ -34,7 +34,7 @@
         <option value="Hall">Halls</option>
       </select>
       ​
-      <button type="submit" onclick="admin_update()" class="btn5">Send</button>
+      <button type="submit" class="btn5">Send</button>
     </form>
     <script>
       document
@@ -48,6 +48,14 @@
             // console.log(all);
           }
 
+          let mail = JSON.parse(localStorage.getItem("details"));
+          let local = JSON.parse(localStorage.getItem("local"));
+          let get_data = local.find(function (L) {
+            return L.email == mail;
+          });
+
+          console.log(get_data);
+
           let image_url = document.getElementById("image_url").value;
 
           let printer_name = document.getElementById("printer_name").value;
@@ -59,28 +67,30 @@
           let contact = document.getElementById("contact").value;
 
           let Catagory = document.getElementById("Catagory").value;
+          let ownerId = get_data.id;
           let id = Date.now();
 
           let updates = {
             image_url,
             printer_name,
-            rating,
+            rate,
             location,
             contact,
             id,
             Catagory,
+            ownerId,
           };
           // console.log(all);
           all.push(updates);
           let allStr = JSON.stringify(all);
 
           localStorage.setItem("updates", allStr);
-
+          admin_update();
           // location.href = "../pages/hollywood.html";
         });
 
       function admin_update() {
-        location.href = "admin-update.html";
+        location.href = "index2.html";
       }
     </script>
   </body>

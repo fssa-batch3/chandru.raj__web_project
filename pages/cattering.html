@@ -13,7 +13,7 @@
     <header>
       <nav>
         <div class="logo">
-          <a href="../index.html"
+          <!-- <a href="..//index.html" -->
             ><img alt="image" src="../assets/images/Redefine.png"
           /></a>
         </div>
@@ -22,11 +22,25 @@
           <li>
             <a href="../pages/about.html">About Us</a>
           </li>
+          <!-- <li>
+            <a href="../pages/sign-up.html">Sign up</a>
+          </li>
+          <li>
+            <a href="../pages/login.html">Login</a>
+          </li> -->
+          <li>
+            <a href="../pages/userprofile.html">Profile</a>
+          </li>
         </ul>
-
-        <form action="../pages/login.html">
+        <!-- <form action="./pages/sign-up.html">
+          <button class="signin">Sign Up</button>
+        </form>
+        <form action="./pages/login.html">
           <button class="signin">Log in</button>
         </form>
+        <form action="./pages/userprofile.html">
+          <button class="signin">Profile</button>
+        </form> -->
       </nav>
     </header>
 
@@ -204,7 +218,7 @@
       let create_card = JSON.parse(localStorage.getItem("updates"));
       console.log(create_card);
 
-      let movietype = create_card.filter((h) => h.Catagory == "Card");
+      let movietype = create_card.filter((h) => h.Catagory == "Catering");
       console.log(movietype);
       console.log(movietype.length);
 
