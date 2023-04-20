@@ -74,26 +74,33 @@
         logForm.addEventListener("submit", (e)=> {
 
       
-    e.preventDefault()
+          e.preventDefault()
+          
           const email1 = document.getElementById("email").value;
           const password = document.getElementById("password").value;
 
           const champ = localStorage.getItem("local");
           const obj = JSON.parse(champ);
 
+          console.log(email1)
           console.log(obj);
           const tofind = obj.find((h) => h["email"] == email1);
 
+          console.log(tofind)
+
 
           if (tofind !== undefined && tofind !== null) {
-            console.log(tofind["pass"]);
+
+            console.log(tofind["password"])
+
 
             if(tofind["email"] !== email1){
               alert("user not exist")
             }
 
-            else if (tofind["pass"] !== password) {
-             return  alert("Password is wrong");
+            else if (tofind["password"] !== password) {
+              alert("Password is wrong")
+              return
             } 
 
             else {
@@ -101,6 +108,8 @@
               localStorage.setItem("details", JSON.stringify(tofind["email"]));
               if (tofind["Catagory"] == "Buyer") {
             location.href = "index.logi.html";}
+
+
             if (tofind["Catagory"] == "Sellar") {
             // location.href = "sellar-form.html";
             let check = false
@@ -113,11 +122,11 @@
             }
           }) 
           if (check == true) {
-            location.href="index2.html"
+            window.location.href="index2.html"
         
           }
           else{
-            location.href = "sellar-form.html";
+            window.location.href = "sellar-form.html";
           }  
 
           }

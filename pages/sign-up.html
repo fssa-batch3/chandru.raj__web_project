@@ -120,39 +120,41 @@
 
         console.log(chan);
         //  console.log("chandru");
-        arr.push(chan);
         if (password != confirmpassword) {
           alert("password not match try again");
 
           // window.location.href = "register.html";
-        } else {
-          window.location.href = "./login.html";
         }
 
         let match = false;
         let array = JSON.parse(localStorage.getItem("local"));
-        for (let i = 0; i < array.length; i++) {
-          // if (arr[i]["email"] === email) {
-          if (email === array[i].email) {
-            match = true;
-            break;
+
+        if (array !== null) {
+          for (let i = 0; i < array.length; i++) {
+            // if (arr[i]["email"] === email) {
+            if (email === array[i].email) {
+              match = true;
+              break;
+            }
+            // else {
+            //   match = false;
+            // }
           }
-          // else {
-          //   match = false;
-          // }
         }
 
         if (match === true) {
           alert("Email id already exist");
         } else {
-          if (window.localStorage.getItem("local") === null) {
-            window.localStorage.setItem("local", JSON.stringify(arr));
-            console.log(window.localStorage.getItem("local"));
-          } else {
-            let json = JSON.prase(window.localStorage.getItem("local"));
+          if (localStorage.getItem("local") === null) {
+            arr.push(chan);
 
-            json.push(chan);
-            window.localStorage.setItem("local", JSON.stringify(json));
+            window.localStorage.setItem("local", JSON.stringify(arr));
+            window.location.href = "./login.html";
+          } else {
+            arr = JSON.prase(localStorage.getItem("local"));
+            arr.push(chan);
+
+            window.localStorage.setItem("local", JSON.stringify(arr));
           }
           window.location.href = "./login.html";
         }
