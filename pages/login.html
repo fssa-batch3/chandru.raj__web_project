@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../assets/css/login.css" />
   </head>
   <body>
+
     <body>
       <!-- this page is represented by the logi page -->
       <div class="all">
@@ -66,6 +67,7 @@
           </div>
         </div>
       </div>
+
       <script>
 
         let logForm = document.querySelector(".para")
@@ -109,34 +111,37 @@
               if (tofind["Catagory"] == "Buyer") {
             location.href = "index.logi.html";}
 
-
-            if (tofind["Catagory"] == "Sellar") {
-            // location.href = "sellar-form.html";
-            let check = false
-          
-          let mail = JSON.parse(localStorage.getItem("local"))
-          let get_data = mail.find(function(l){
-            let findEmail = l["email"] 
-            if(findEmail== email1){
-                      check = true
+            else {
+              location.href  = "../pages/sellar-form.html"
             }
-          }) 
-          if (check == true) {
-            window.location.href="index2.html"
-        
-          }
-          else{
-            window.location.href = "sellar-form.html";
-          }  
+          } 
 
-          }
+
+            // if (tofind["Catagory"] == "Sellar") {
+            // location.href = "sellar-form.html";
+            // let check = false
+          
+          // let mail = JSON.parse(localStorage.getItem("local"))
+          // let get_data = mail.find(function(l){
+          //   let findEmail = l["email"] 
+          //   if(findEmail== email1){
+          //             check = true
+          //   }
+          // }) 
+
+          
+        
+         
+
+          // } else{
+          //   window.location.href = "index.logi.html";
+          // }  
           // let mail = JSON.parse(localStorage.getItem("details"));
           // let local = JSON.parse(localStorage.getItem("local"));
           // let get_data = local.find(function (L) {
           //   return L.email == mail;
 
         
-          } 
 
         
   

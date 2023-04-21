@@ -58,6 +58,7 @@
                   autocomplete="gghgjhfv"
                   required
                   title="Password required"
+                  pattern="[a-zA-Z]{8,12}"
                 />
               </div>
 
@@ -68,6 +69,7 @@
                   id="confirm-password"
                   placeholder="password"
                   autocomplete="gghgjhfv"
+                  pattern="[a-zA-Z]{8,12}"
                   required
                   title=" Password required"
                 />
@@ -122,8 +124,7 @@
         //  console.log("chandru");
         if (password != confirmpassword) {
           alert("password not match try again");
-
-          // window.location.href = "register.html";
+          return;
         }
 
         let match = false;
@@ -144,20 +145,22 @@
 
         if (match === true) {
           alert("Email id already exist");
+          return;
+        }
+
+        if (localStorage.getItem("local") === undefined) {
+          arr.push(chan);
+
+          window.localStorage.setItem("local", JSON.stringify(arr));
+          window.location.href = "./login.html";
         } else {
-          if (localStorage.getItem("local") === null) {
-            arr.push(chan);
+          let dataArr = JSON.parse(localStorage.getItem("local"));
+          dataArr.push(chan);
 
-            window.localStorage.setItem("local", JSON.stringify(arr));
-            window.location.href = "./login.html";
-          } else {
-            arr = JSON.prase(localStorage.getItem("local"));
-            arr.push(chan);
-
-            window.localStorage.setItem("local", JSON.stringify(arr));
-          }
+          window.localStorage.setItem("local", JSON.stringify(dataArr));
           window.location.href = "./login.html";
         }
+        // window.location.href = "./login.html";
       });
       // else {
       //   if(lo)
