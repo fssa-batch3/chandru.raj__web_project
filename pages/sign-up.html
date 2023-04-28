@@ -117,6 +117,9 @@
           name,
           id,
           Catagory,
+          address: "Enter your address",
+          state: "Enter your state",
+          area: "Enter your city",
         };
         // chan[password] = pass;
 
@@ -153,6 +156,7 @@
 
           window.localStorage.setItem("local", JSON.stringify(arr));
           window.location.href = "./login.html";
+          // alert("success");
         } else {
           let dataArr = JSON.parse(localStorage.getItem("local"));
           dataArr.push(chan);
@@ -166,7 +170,7 @@
       //   if(lo)
       //   let str = JSON.stringify(arr);
       //   localStorage.setItem("local", str);
-      //   alert("success");
+      // alert("success");
       //   location.href = "./login.html";
       // }
     </script>

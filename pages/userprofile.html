@@ -160,6 +160,10 @@
     alert("You have successfully updated your account details!");
     location.reload()
     });
+
+
+
+
     // const user_email = JSON.parse(window.localStorage.getItem("details"))
     let check = true;
     const presend_details = JSON.parse(window.localStorage.getItem("local"))
@@ -167,15 +171,17 @@
         let check_email = user_obj["email"]
         if(user_email===check_email){
       let fname1 = document.getElementById("name");
-      let lname1 = document.getElementById("surname");
+      // let lname1 = document.getElementById("surname");
       let mail1 = document.getElementById("emailid");
       let phone1 = document.getElementById("mobilenumber");
       let address1 = document.getElementById("address");
       let state1 = document.getElementById("state");
       let country1 = document.getElementById("area");
+
+      console.log(user_obj["address"])
      
-      fname1.value  = user_obj["fname"];
-      lname1.value  = user_obj["lname"];
+      fname1.value  = user_obj["name"];
+      // lname1.value  = user_obj["lname"];
       mail1.value  = user_obj["email"];
       phone1.value  = user_obj["phone"];
       address1.value  = user_obj["address"];

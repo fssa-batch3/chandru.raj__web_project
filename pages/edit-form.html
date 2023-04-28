@@ -3,7 +3,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../assets/css/userprofile.css" />
+    <link rel="stylesheet" href="../assets/css/sellar-form.css" />
     <title>Document</title>
   </head>
   <body>
@@ -70,7 +70,7 @@
       let contact1 = document.getElementById("contact").value;
 
       let newObject = {
-        image: img1,
+        image_url: img1,
         printer_name: printer_name1,
         rating: rating1,
         location: location2,
@@ -95,7 +95,7 @@
         printerId.splice(index, 1);
         console.log(printerId);
         localStorage.setItem("updates", JSON.stringify(printerId));
-        location.reload();
+        location.href = "admin-update.html";
         return;
       } else {
         return;
