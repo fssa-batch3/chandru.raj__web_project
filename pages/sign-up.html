@@ -151,7 +151,7 @@
           return;
         }
 
-        if (localStorage.getItem("local") === undefined) {
+        if (localStorage.getItem("local") === null) {
           arr.push(chan);
 
           window.localStorage.setItem("local", JSON.stringify(arr));
