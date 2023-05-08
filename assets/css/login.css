@@ -61,6 +61,12 @@ body {
   width: 200px;
   height: 30px;
 }
+.test {
+  width: 200px;
+  height: 30px;
+  border-radius: 5px;
+  padding-left: 4%;
+}
 
 .btn1 {
   background-color: goldenrod;
