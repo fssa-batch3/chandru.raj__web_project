@@ -33,9 +33,11 @@
           <li>
             <a href="./pages/login.html">Login</a>
           </li>
-          <li>
+
+          <!-- <li>
             <a href="./pages/userprofile.html">Profile</a>
-          </li>
+          </li> -->
+
         </ul>
         <!-- <form action="./pages/sign-up.html">
           <button class="signin">Sign Up</button>
@@ -67,8 +69,8 @@
             />
           </div>
         </div>
-        <div class="adiv">
-          <a class="a" href="./pages/halls.html">View More</a>
+        <div class="adiv hall-more">
+     View More
         </div>
       </div>
       <div class="main">
@@ -97,11 +99,27 @@
           </div>
         </div>
         <div class="adiv">
-          <a class="a" href="./pages/login.html">View More</a>
+          <a class="a" href="./pages/card.html">View More</a>
         </div>
       </div>
     </section>
     <!-- The footer part -->
+    <script>
+
+      let userUrl = window.location.search
+
+let urlParameter = new URLSearchParams(userUrl)
+
+let getUserId = urlParameter.get("user")
+console.log(getUserId)
+   let hallMore = document.querySelector(".hall-more")
+
+   hallMore.addEventListener("click", () => {
+
+    window.location.href = "./pages/halls.html?user=" + getUserId
+   })
+      
+    </script>
     <footer class="foot">
       <div class="row">
         <div class="col">

@@ -29,22 +29,14 @@
                 placeholder=" enter your name"
               /><br />
             </div>
-            <div>
-              <label for="surname">Last Name</label><br />
-              <input
-                type="text"
-                class="surname"
-                id="surname"
-                placeholder=" enter your surname"
-              /><br />
-            </div>
+           
           </div>
-          ​ <label for="emailid">Email ID</label><br />
+          ​ <label for="emailid">User ID</label><br />
           <input
-            type="email"
+            type=""
             class="emailid"
             id="emailid"
-            placeholder=" enter your Email ID"
+            placeholder=" enter your User ID"
           /><br />
           <label for="mobilenumber">Mobile Number</label><br />
           <input
@@ -197,24 +189,26 @@ stateArr.addEventListener("change", async () => {
       const user_email = JSON.parse(window.localStorage.getItem("details"))
       const user_details = JSON.parse(window.localStorage.getItem("local"))
       let get_obj = user_details.find(function(user_obj){
-        let check_email = user_obj["email"]
+        let check_email = user_obj["id"]
         if(user_email===check_email){
           return true ;
         }
       });
       console.log(get_obj)
       const fname = document.getElementById("name");
-     
+      // let surname = document.getElementById("surname")
       const mail = document.getElementById("emailid");
    
       fname.value =  get_obj["name"] ;
       mail.value  =  user_email ;
+      // surname.value = 
+
 
       let form = document.getElementById("form");
       form.addEventListener("submit" , function(event){
       event.preventDefault()
       let fname = document.getElementById("name").value;
-      let surname = document.getElementById("surname").value;
+      // let surname = document.getElementById("surname").value;
       let mail = document.getElementById("emailid").value;
       let phone = document.getElementById("mobilenumber").value;
       let address= document.getElementById("address").value;
@@ -224,7 +218,6 @@ stateArr.addEventListener("change", async () => {
      
       let new_data = {
         fname,
-        surname,
         mail,
         phone,
         address, 
@@ -253,10 +246,10 @@ stateArr.addEventListener("change", async () => {
     let check = true;
     const presend_details = JSON.parse(window.localStorage.getItem("local"))
       let get_presend = user_details.find(function(user_obj){
-        let check_email = user_obj["email"]
+        let check_email = user_obj["id"]
         if(user_email===check_email){
       let fname1 = document.getElementById("name");
-      let lname1 = document.getElementById("surname");
+      // let lname1 = document.getElementById("surname");
       let mail1 = document.getElementById("emailid");
       let phone1 = document.getElementById("mobilenumber");
       let address1 = document.getElementById("address");
@@ -266,7 +259,7 @@ stateArr.addEventListener("change", async () => {
       console.log(user_obj["address"])
      
       fname1.value  = user_obj["name"];
-      lname1.value  = user_obj["lname"];
+      // lname1.value  = user_obj["surname"];
       mail1.value  = user_obj["email"];
       phone1.value  = user_obj["phone"];
       address1.value  = user_obj["address"];

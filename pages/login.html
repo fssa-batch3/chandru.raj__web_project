@@ -38,6 +38,8 @@
                   placeholder="email"
                   autocomplete="gghgjhfv"
                   required
+                  value="champ@gmail.com"
+                
                 />
               </div>
               <div class="password">
@@ -54,6 +56,7 @@
                 ]"
                   required
                   title=" Password required"
+                  value="qwertyuiop"
                 />
               </div>
               <!-- to represent button -->
@@ -72,6 +75,16 @@
       </div>
 
       <script>
+
+// Here find the url users
+
+let userUrl = window.location.search
+
+let urlParameter = new URLSearchParams(userUrl)
+
+let getUserId = urlParameter.get("user")
+console.log(getUserId)
+
 
         let logForm = document.querySelector(".para")
 
@@ -110,12 +123,12 @@
 
             else {
               alert("Succesfully loged in");
-              localStorage.setItem("details", JSON.stringify(tofind["email"]));
+              localStorage.setItem("details", JSON.stringify(tofind["id"]));
               if (tofind["Catagory"] == "Buyer") {
-            location.href = "index.logi.html";}
+            location.href = "index.logi.html?user="+ getUserId;}
 
             else {
-              location.href  = "../pages/sellar-form.html"
+              location.href  = "../pages/index2.html"
             }
           } 
 

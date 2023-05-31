@@ -24,6 +24,13 @@
 
         <ul>
           <li>
+            <a id="addYours"  onmouseover="options()" onmouseout="optionsOut()" >Add your's <div class="options">
+              <div class="halls" onclick="sellerForm()">Halls</div>
+              <div class="catteringService" >Catering Service</div>
+              <div class="invitationCards" onclick="invitation()">Invitation Cards</div>
+            </div> </a>
+           </li>
+          <li>
             <a href="../pages/about.html">About Us</a>
           </li>
           <li>
@@ -48,6 +55,8 @@
         <form action="./pages/userprofile.html">
           <button class="signin">Profile</button>
         </form> -->
+
+       
       </nav>
     </header>
     <!-- For logo and selecting halls -->
@@ -70,7 +79,7 @@
           </div>
         </div>
         <div class="adiv">
-          <a class="a" href="../pages/halls.html">View More</a>
+          <a class="a" href="../pages/admin-hall.html">View More</a>
         </div>
       </div>
       <div class="main">
@@ -141,5 +150,25 @@
         </div>
       </div>
     </footer>
+
+    <script>
+      function options(){
+        document.querySelector(".options").style.display = "flex";
+      }
+
+      function optionsOut(){
+        document.querySelector(".options").style.display = "none";
+
+      }
+
+      function sellerForm(){
+        location.href = "sellar-form.html?type=Hall"
+      }
+
+      function invitation(){
+        location.href = "invitation-sellar-form.html"
+      }
+      
+    </script>
   </body>
 </html>

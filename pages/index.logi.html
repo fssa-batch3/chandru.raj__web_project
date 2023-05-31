@@ -66,8 +66,8 @@
             />
           </div>
         </div>
-        <div class="adiv">
-          <a class="a" href="../pages/halls.html">View More</a>
+        <div class="adiv hall-more">
+      View More
         </div>
       </div>
       <div class="main">
@@ -138,5 +138,24 @@
         </div>
       </div>
     </footer>
+    <link rel="stylesheet" href="../pages/halls.html">
   </body>
+
+  <script> 
+  
+  let userUrl = window.location.search
+
+let urlParameter = new URLSearchParams(userUrl)
+
+let getUserId = urlParameter.get("user")
+console.log(getUserId)
+
+   let hallMore = document.querySelector(".hall-more")
+
+   hallMore.addEventListener("click", () => {
+
+    window.location.href = "../pages/halls.html?user=" + getUserId
+    
+   })
+   </script>
 </html>

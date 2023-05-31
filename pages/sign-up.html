@@ -37,6 +37,7 @@
                   title="Name is required"
                   pattern="[a-zA-Z]{1,32}"
                   required
+                  value="Chandru"
                 />
               </div>
               <div class="email">
@@ -205,7 +206,7 @@
           dataArr.push(chan);
 
           window.localStorage.setItem("local", JSON.stringify(dataArr));
-          window.location.href = "./login.html";
+          window.location.href = "./login.html?user=" + id;
         }
         // window.location.href = "./login.html";
       });

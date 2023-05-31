@@ -98,9 +98,9 @@
           <li>
             <a href="../pages/login.html">Login</a>
           </li> -->
-          <li>
+          <!-- <li>
             <a href="../pages/userprofile.html">Profile</a>
-          </li>
+          </li> -->
         </ul>
         <!-- <form action="./pages/sign-up.html">
           <button class="signin">Sign Up</button>
@@ -246,12 +246,12 @@
 
 
     <script>
-      let create_card = JSON.parse(localStorage.getItem("updates"));
+      let create_card = JSON.parse(localStorage.getItem("printingpress"));
       console.log(create_card);
 
-      let icard = create_card.filter((h) => h.Catagory == "Card");
-      console.log(icard);
-      console.log(icard.length);
+      // let icard = create_card.filter((h) => h.Catagory == "Card");
+      // console.log(icard);
+      // console.log(icard.length);
 
       for (let i = 0; i < icard.length; i++) {
         let main = document.createElement("div");
@@ -267,7 +267,7 @@
         let card_pic = document.createElement("img");
         card_pic.setAttribute("class", "card-pic");
         card_pic.setAttribute("alt", "image");
-        card_pic.setAttribute("src", icard[i]["image_url"]);
+        card_pic.setAttribute("src", icard[i]["shopimage"]);
         MT_div.append(card_pic);
 
         let main_content = document.createElement("div");
@@ -275,12 +275,12 @@
         main.append(main_content);
 
         let main_content_h1 = document.createElement("h1");
-        main_content_h1.innerText = icard[i]["printer_name"];
+        main_content_h1.innerText = icard[i]["shopname"];
         main_content.append(main_content_h1);
 
-        let main_content_h3 = document.createElement("h3");
-        main_content_h3.innerText = icard[i]["rating"];
-        main_content.append(main_content_h3);
+        // let main_content_h3 = document.createElement("h3");
+        // main_content_h3.innerText = icard[i]["rating"];
+        // main_content.append(main_content_h3);
 
         let main_content_h3_2 = document.createElement("h3");
         main_content_h3_2.innerText = icard[i]["location"];
