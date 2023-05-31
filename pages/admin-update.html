@@ -67,7 +67,7 @@
     <header>
       <nav>
         <div class="logo">
-          <a href="../index.html"
+          <!-- <a href="..//index.html" -->
             ><img alt="image" src="../assets/images/Redefine.png"
           /></a>
         </div>
@@ -76,11 +76,30 @@
           <li>
             <a href="../pages/about.html">About Us</a>
           </li>
-        </ul>
+          
+          <!-- <li>
+            <a href="../pages/sign-up.html">Sign up</a>
+          </li>
+          <li>
+            <a href="../pages/login.html">Login</a>
+          </li> -->
+          <li>
+            <a href="../pages/userprofile.html">Profile</a>
+          </li>
 
-        <form action="../pages/login.html">
+          <li>
+            <a href="../pages/sellar-form.html">Add Cart</a>
+          </li>
+        </ul>
+        <!-- <form action="./pages/sign-up.html">
+          <button class="signin">Sign Up</button>
+        </form>
+        <form action="./pages/login.html">
           <button class="signin">Log in</button>
         </form>
+        <form action="./pages/userprofile.html">
+          <button class="signin">Profile</button>
+        </form> -->
       </nav>
     </header>
 
@@ -220,7 +239,7 @@
         let card_pic = document.createElement("img");
         card_pic.setAttribute("class", "card-pic");
         card_pic.setAttribute("alt", "image");
-        card_pic.setAttribute("src", data[i]["image"]);
+        card_pic.setAttribute("src", data[i]["image_url"]);
         MT_div.append(card_pic);
 
         let main_content = document.createElement("div");
@@ -232,7 +251,7 @@
         main_content.append(main_content_h1);
 
         let main_content_h3 = document.createElement("h3");
-        main_content_h3.innerText = data[i]["rate"];
+        main_content_h3.innerText = data[i]["rating"];
         main_content.append(main_content_h3);
 
         let main_content_h3_2 = document.createElement("h3");
@@ -248,13 +267,20 @@
         main.append(btn);
 
         let btn_a = document.createElement("a");
-        btn_a.setAttribute("href", `admin-profile.html?id=${data[i]["id"]}`);
+        btn_a.setAttribute("href", `edit-form.html?id=${data[i]["id"]}`);
         btn.append(btn_a);
 
-        let btn_Button = document.createElement("button");
-        btn_Button.setAttribute("class", "book-now-btn");
-        btn_Button.innerText = "Edit";
-        btn_a.append(btn_Button);
+        let mail = JSON.parse(localStorage.getItem("details"));
+        let local = JSON.parse(localStorage.getItem("local"));
+        let get_data = local.find(function (L) {
+          return L.email == mail;
+        });
+        if (get_data.id == data[i]["ownerId"]) {
+          let btn_Button = document.createElement("button");
+          btn_Button.setAttribute("class", "book-now-btn");
+          btn_Button.innerText = "Edit";
+          btn_a.append(btn_Button);
+        }
 
         // let btn_Button2 = document.createElement("button");
         // btn_Button2.setAttribute("class", "book-now-btn");

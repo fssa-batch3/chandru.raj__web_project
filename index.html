@@ -16,21 +16,38 @@
     <!-- This code for navbar -->
     <header>
       <nav>
+        
         <div class="logo">
-          <a href="..//index.html"
+          <!-- <a href="..//index.html" -->
             ><img alt="image" src="./assets/images/Redefine.png"
           /></a>
         </div>
 
         <ul>
           <li>
-            <a href="./pages/about.html">ABOUT US</a>
+            <a href="./pages/about.html">About Us</a>
           </li>
-        </ul>
+          <li>
+            <a href="./pages/sign-up.html">Sign up</a>
+          </li>
+          <li>
+            <a href="./pages/login.html">Login</a>
+          </li>
 
+          <!-- <li>
+            <a href="./pages/userprofile.html">Profile</a>
+          </li> -->
+
+        </ul>
+        <!-- <form action="./pages/sign-up.html">
+          <button class="signin">Sign Up</button>
+        </form>
         <form action="./pages/login.html">
           <button class="signin">Log in</button>
         </form>
+        <form action="./pages/userprofile.html">
+          <button class="signin">Profile</button>
+        </form> -->
       </nav>
     </header>
     <!-- For logo and selecting halls -->
@@ -52,8 +69,8 @@
             />
           </div>
         </div>
-        <div class="adiv">
-          <a class="a" href="./pages/halls.html">View More</a>
+        <div class="adiv hall-more">
+     View More
         </div>
       </div>
       <div class="main">
@@ -82,11 +99,27 @@
           </div>
         </div>
         <div class="adiv">
-          <a class="a" href="./pages/card.html#">View More</a>
+          <a class="a" href="./pages/card.html">View More</a>
         </div>
       </div>
     </section>
     <!-- The footer part -->
+    <script>
+
+      let userUrl = window.location.search
+
+let urlParameter = new URLSearchParams(userUrl)
+
+let getUserId = urlParameter.get("user")
+console.log(getUserId)
+   let hallMore = document.querySelector(".hall-more")
+
+   hallMore.addEventListener("click", () => {
+
+    window.location.href = "./pages/halls.html?user=" + getUserId
+   })
+      
+    </script>
     <footer class="foot">
       <div class="row">
         <div class="col">

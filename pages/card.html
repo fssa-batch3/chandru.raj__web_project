@@ -7,9 +7,10 @@
     <title>Invitation Cards</title>
     <link rel="stylesheet" href="../assets/css/card.css" />
     <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/search.css">
   </head>
   <script>
-    // let data = [
+    // let icard = [
     //   {
     //     img: "../assets/images/set_collection_luxury_wedding_invitation_cards_template.jpg",
     //     alt: "supreme",
@@ -61,26 +62,55 @@
     //   },
     // ];
 
-    let data = JSON.parse(localStorage.getItem("updates"));
+    // let icard = JSON.parse(localStorage.getItem("updates"));
   </script>
   <body>
     <header>
       <nav>
         <div class="logo">
-          <a href="../index.html"
+          <!-- <a href="..//index.html" -->
             ><img alt="image" src="../assets/images/Redefine.png"
           /></a>
         </div>
 
         <ul>
+          <div class="container">
+            <input placeholder="Type to search..." required="" class="input" id="searchbar" name="text" type="text">
+            <div class="icon">
+                <svg viewBox="0 0 512 512" class="ionicon" xmlns="http://www.w3.org/2000/svg">
+                    <title>Search</title>
+                    <path stroke-width="32" stroke-miterlimit="10" stroke="currentColor" fill="none" d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z"></path>
+                    <path d="M338.29 338.29L448 448" stroke-width="32" stroke-miterlimit="10" stroke-linecap="round" stroke="currentColor" fill="none"></path>
+                </svg>
+            </div>
+        </div>
+          <!-- <input type="text" id="searchbar" class="input"
+          style="background-color: black;
+          padding: 12px 17px;
+          border: none;
+          border-radius: 20px;"> -->
           <li>
             <a href="../pages/about.html">About Us</a>
           </li>
+          <!-- <li>
+            <a href="../pages/sign-up.html">Sign up</a>
+          </li>
+          <li>
+            <a href="../pages/login.html">Login</a>
+          </li> -->
+          <!-- <li>
+            <a href="../pages/userprofile.html">Profile</a>
+          </li> -->
         </ul>
-
-        <form action="../pages/login.html">
+        <!-- <form action="./pages/sign-up.html">
+          <button class="signin">Sign Up</button>
+        </form>
+        <form action="./pages/login.html">
           <button class="signin">Log in</button>
         </form>
+        <form action="./pages/userprofile.html">
+          <button class="signin">Profile</button>
+        </form> -->
       </nav>
     </header>
 
@@ -203,9 +233,27 @@
         >
       </div>
     </div> -->
+    
+    <!-- <div>
+      <label for="surname">Last Name</label><br />
+      <input
+        type="text"
+        class="surname"
+        id="surname"
+        placeholder=" enter your surname"
+      /><br />
+    </div> -->
+
 
     <script>
-      for (let i = 0; i < data.length; i++) {
+      let create_card = JSON.parse(localStorage.getItem("printingpress"));
+      console.log(create_card);
+
+      // let icard = create_card.filter((h) => h.Catagory == "Card");
+      // console.log(icard);
+      // console.log(icard.length);
+
+      for (let i = 0; i < icard.length; i++) {
         let main = document.createElement("div");
         main.setAttribute("class", "main");
 
@@ -219,7 +267,7 @@
         let card_pic = document.createElement("img");
         card_pic.setAttribute("class", "card-pic");
         card_pic.setAttribute("alt", "image");
-        card_pic.setAttribute("src", data[i]["image"]);
+        card_pic.setAttribute("src", icard[i]["shopimage"]);
         MT_div.append(card_pic);
 
         let main_content = document.createElement("div");
@@ -227,19 +275,19 @@
         main.append(main_content);
 
         let main_content_h1 = document.createElement("h1");
-        main_content_h1.innerText = data[i]["printer_name"];
+        main_content_h1.innerText = icard[i]["shopname"];
         main_content.append(main_content_h1);
 
-        let main_content_h3 = document.createElement("h3");
-        main_content_h3.innerText = data[i]["rate"];
-        main_content.append(main_content_h3);
+        // let main_content_h3 = document.createElement("h3");
+        // main_content_h3.innerText = icard[i]["rating"];
+        // main_content.append(main_content_h3);
 
         let main_content_h3_2 = document.createElement("h3");
-        main_content_h3_2.innerText = data[i]["location"];
+        main_content_h3_2.innerText = icard[i]["location"];
         main_content.append(main_content_h3_2);
 
         let main_content_h3_3 = document.createElement("h3");
-        main_content_h3_3.innerText = data[i]["contact"];
+        main_content_h3_3.innerText = icard[i]["contact"];
         main_content.append(main_content_h3_3);
 
         let btn = document.createElement("div");
@@ -247,19 +295,32 @@
         main.append(btn);
 
         let btn_a = document.createElement("a");
-        btn_a.setAttribute(
-          "href",
-          "http://127.0.0.1:5500/pages/i-details.html"
-        );
+        btn_a.setAttribute("href", "i-details.html?name=" + icard[i]["printer_name"] );
         btn.append(btn_a);
 
-        let btn_Button = document.createElement("button");
+        let btn_Button = document.createElement("a");
         btn_Button.setAttribute("class", "book-now-btn");
+        btn_Button.setAttribute("href", "i-details.html?name=" + icard[i]["printer_name"] );
         btn_Button.innerText = "Book Now";
         btn_a.append(btn_Button);
 
         document.querySelector("body").append(main);
       }
+      let searchbar = document.getElementById("searchbar");
+const cards = document.getElementsByClassName("main");
+
+searchbar.addEventListener("input", () => {
+  for (let i = 0; i < cards.length; i++) {
+    const element = cards[i];
+    if (
+      element.innerHTML.toLowerCase().includes(searchbar.value.toLowerCase())
+    ) {
+      element.style.display = "flex";
+    } else {
+      element.style.display = "none";
+    }
+  }
+});
     </script>
   </body>
 </html>

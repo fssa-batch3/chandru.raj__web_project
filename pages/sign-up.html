@@ -9,7 +9,7 @@
   </head>
   <body>
     <!-- this page is represented by the logi page -->
-    <form>
+    <form id="register">
       <div class="all">
         <div class="main">
           <div class="all-1">
@@ -31,11 +31,13 @@
                 <input
                   type="Name"
                   id="name"
+                  class="test"
                   placeholder="Name"
                   autocomplete="gghgjhfv"
                   title="Name is required"
                   pattern="[a-zA-Z]{1,32}"
                   required
+                  value="Chandru"
                 />
               </div>
               <div class="email">
@@ -54,10 +56,12 @@
                 <input
                   type="password"
                   id="password"
+                  class="test"
                   placeholder="password"
                   autocomplete="gghgjhfv"
                   required
-                  title=" Password required"
+                  title="Password required"
+                  pattern="[a-zA-Z]{8,12}"
                 />
               </div>
 
@@ -68,16 +72,23 @@
                   id="confirm-password"
                   placeholder="password"
                   autocomplete="gghgjhfv"
+                  class="test"
+                  pattern="[a-zA-Z]{8,12}"
                   required
                   title=" Password required"
                 />
               </div>
+              <div class="select">
+                <select name="Catagory" id="Catagory">
+                  <option value="Buyer">Customer</option>
+                  <option value="Sellar">Service</option>
+                </select>
+              </div>
               <!-- to represent button -->
               <div class="button">
                 <!-- <button class="btn1">Forgot password?</button> -->
-                <a onclick="submitLogin()" type="submit"
-                  ><button class="btn1">Submit</button></a
-                >
+
+                <button type="submit" class="btn1">Submit</button>
               </div>
 
               <!-- <div class="sign">
@@ -88,41 +99,124 @@
         </div>
       </div>
     </form>
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
+      import {
+        getDatabase,
+        ref,
+        push,
+        onValue,
+        set,
+      } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-database.js";
+
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyB7V99R5CJzjz9B-QAO30SVqljp3DbpB8I",
+        authDomain: "redefine-95809.firebaseapp.com",
+        projectId: "redefine-95809",
+        storageBucket: "redefine-95809.appspot.com",
+        messagingSenderId: "656557256648",
+        appId: "1:656557256648:web:05839256c72bc882f55afd",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+
+      let database = getDatabase();
+
+      const starCountRef = ref(database, "name/");
+      onValue(starCountRef, (snapshot) => {
+        const data = snapshot.val();
+        console.log(data);
+      });
+    </script>
     <script>
-      function submitLogin() {
+      let register = document.querySelector("#register");
+      console.log(register);
+
+      register.addEventListener("submit", function (e) {
+        e.preventDefault();
+        // console.log("chandru");
+
+        let name = document.getElementById("name").value.trim();
+        let email = document.getElementById("email").value.trim();
+        console.log(email);
+        let password = document.getElementById("password").value.trim();
+        let confirmpassword = document
+          .getElementById("confirm-password")
+          .value.trim();
+        let Catagory = document.getElementById("Catagory").value.trim();
+        let id = Date.now();
         let arr = [];
-        if (localStorage.getItem("local") != null) {
-          arr = JSON.parse(localStorage.getItem("local"));
+        let chan = {
+          email,
+          password,
+          name,
+          id,
+          Catagory,
+          address: "Enter your address",
+          state: "Enter your state",
+          area: "Enter your city",
+        };
+        // chan[password] = pass;
+
+        console.log(chan);
+        //  console.log("chandru");
+        if (password != confirmpassword) {
+          alert("password not match try again");
+          return;
         }
-        const name = document.getElementById("name").value;
-        const email = document.getElementById("email").value;
-        const password = document.getElementById("password").value;
-        const confirmpassword =
-          document.getElementById("confirm-password").value;
-        const id = Date.now();
 
         let match = false;
-        for (let i = 0; i < arr.length; i++) {
-          if (email == arr[i]["email"]) {
-            match = true;
-            break;
+        let array = JSON.parse(localStorage.getItem("local"));
+
+        if (array !== null) {
+          for (let i = 0; i < array.length; i++) {
+            // if (arr[i]["email"] === email) {
+            if (email === array[i].email) {
+              match = true;
+              break;
+            }
+            // else {
+            //   match = false;
+            // }
           }
         }
-        if (match == true) {
+
+        if (match === true) {
           alert("Email id already exist");
-        } else {
-          const chan = {
-            email: email,
-            pass: password,
-            name: name,
-            id: id,
-          };
-          arr.push(chan);
-          const str = JSON.stringify(arr);
-          localStorage.setItem("local", str);
-          window.location.href = "pages\login.html";
+          return;
         }
-      }
+
+        if (
+          localStorage.getItem("local") === null ||
+          localStorage.getItem("local") === undefined
+        ) {
+          arr.push(chan);
+
+          window.localStorage.setItem("local", JSON.stringify(arr));
+          window.location.href = "./login.html";
+          // alert("success");
+        } else {
+          let dataArr = JSON.parse(localStorage.getItem("local"));
+          dataArr.push(chan);
+
+          window.localStorage.setItem("local", JSON.stringify(dataArr));
+          window.location.href = "./login.html?user=" + id;
+        }
+        // window.location.href = "./login.html";
+      });
+      // else {
+      //   if(lo)
+      //   let str = JSON.stringify(arr);
+      //   localStorage.setItem("local", str);
+      // alert("success");
+      //   location.href = "./login.html";
+      // }
     </script>
   </body>
 </html>

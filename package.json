@@ -1,0 +1,24 @@
+{
+  "name": "chandru.raj__web_project",
+  "version": "1.0.0",
+  "description": "This project is about event management to run marriage event\r Problemstatement:https://docs.google.com/document/d/1L1cZjipl5UCsWtnQu4twg2csJPA_XhGq9XLtnuG4NWc/edit\r MarketResearch:https://docs.google.com/document/d/1Ikfs4mZEzAoyfxUnrWIDTOGP5Ll57L4eY42H5Rw58Eg/edit\r UserFlow:https://drive.google.com/drive/folders/1BVsZu243Wvd309coVVKf6-GVMW6GbIBE\r Wireframe:https://drive.google.com/drive/folders/1bmNQYICYIaFSyty7r08PqYRnktG72qGm",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fssa-batch3/chandru.raj__web_project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fssa-batch3/chandru.raj__web_project/issues"
+  },
+  "homepage": "https://github.com/fssa-batch3/chandru.raj__web_project#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^17.4.4",
+    "@commitlint/config-conventional": "^17.4.4",
+    "husky": "^8.0.3"
+  }
+}
